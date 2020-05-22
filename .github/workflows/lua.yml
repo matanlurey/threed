@@ -1,4 +1,4 @@
-name: Site Generator
+name: Lua
 
 on:
   push:
@@ -11,17 +11,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@master
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+          submodules: true
+
       - uses: leafo/gh-actions-lua@v5
       - uses: leafo/gh-actions-luarocks@v2
 
-      - name: build
+      - name: Install
         run: |
           luarocks install ldoc
+          luarocks install luacheck
 
-      - name: ldoc
+      - name: Check
         run: |
-          ldoc --all --dir ldoc mod
+          luacheck threed.lua tests
+
+      - name: Test
+        run: |
+          lua tests/vector.lua
+
+      - name: Document
+        run: |
+          ldoc --all --dir ldoc threed.lua
 
       - name: Upload LDoc
         uses: actions/upload-artifact@v1
