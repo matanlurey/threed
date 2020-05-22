@@ -1,4 +1,4 @@
-Name: Lua
+name: Lua
 
 on:
   push:
