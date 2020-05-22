@@ -11,29 +11,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@master
+      - name: Checkout
+        uses: actions/checkout@master
         with:
+          fetch-depth: 1
           submodules: true
 
       - uses: leafo/gh-actions-lua@v5
       - uses: leafo/gh-actions-luarocks@v2
 
-      - name: build
+      - name: Install
         run: |
           luarocks install ldoc
           luarocks install luacheck
 
-      - name: check
+      - name: Check
         run: |
           luacheck threed.lua tests
 
-      - name: test
+      - name: Test
         run: |
           lua tests/vector.lua
 
-      - name: doc
+      - name: Document
         run: |
-          ldoc --all --dir ldoc mod
+          ldoc --all --dir ldoc threed.lua
 
       - name: Upload LDoc
         uses: actions/upload-artifact@v1
