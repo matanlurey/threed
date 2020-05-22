@@ -20,29 +20,6 @@ jobs:
       - uses: leafo/gh-actions-lua@v5
       - uses: leafo/gh-actions-luarocks@v2
 
-      - name: Install
-        run: |
-          luarocks install ldoc
-          luarocks install luacheck
-
-      - name: Check
-        run: |
-          luacheck threed.lua tests
-
-      - name: Test
-        run: |
-          lua tests/vector.lua
-
-      - name: Document
-        run: |
-          ldoc --all --dir ldoc threed.lua
-
-      - name: Upload LDoc
-        uses: actions/upload-artifact@v1
-        with:
-          name: ldoc
-          path: ldoc
-
   deploy:
     if: github.event_name == 'push'
 
