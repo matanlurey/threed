@@ -1,4 +1,4 @@
-name: Lua
+name: Site Generator
 
 on:
   push:
@@ -11,14 +11,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@master
-        with:
-          fetch-depth: 1
-          submodules: true
-
+      - uses: actions/checkout@master
       - uses: leafo/gh-actions-lua@v5
       - uses: leafo/gh-actions-luarocks@v2
+
+      - name: build
+        run: |
+          luarocks install ldoc
+
+      - name: ldoc
+        run: |
+          ldoc --all --dir ldoc mod
+
+      - name: Upload LDoc
+        uses: actions/upload-artifact@v1
+        with:
+          name: ldoc
+          path: ldoc
 
   deploy:
     if: github.event_name == 'push'
