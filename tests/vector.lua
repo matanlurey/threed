@@ -34,7 +34,7 @@ test.is = function()
 end
 
 test.zero = function()
-  local vector = vector.zero()
+  local vector = vector.zero(3)
   test.equal(#vector, 3)
   test.equal(vector[1], 0)
   test.equal(vector[2], 0)
@@ -47,12 +47,9 @@ test.negate = function()
   test.equivalent(vector.negate({-1, -3, -5}), {1, 3, 5})
 end
 
-test.multiply = function()
-  test.equivalent(vector.multiply({1, 2, 4}, 2), {2, 4, 8})
-end
-
-test.divide = function()
-  test.equivalent(vector.divide({2, 4, 6}, 2), {1, 2, 3})
+test.scale = function()
+  test.equivalent(vector.scale({1, 2, 4}, 2), {2, 4, 8})
+  test.equivalent(vector.scale({2, 4, 6}, -2), {1, 2, 3})
 end
 
 test.add = function()
@@ -65,4 +62,67 @@ end
 
 test.length = function()
   test.equal(vector.length({5, -4, 7}), math.sqrt(90))
+end
+
+test.normalize = function()
+  test.equivalent(vector.normalize({8, -3, 1/2}), {0.935, -0.350, 0.058})
+end
+
+test.distance = function()
+  test.equal(vector.distance({5, 6, 2}, {-7, 11,-13}), math.sqrt(394))
+  test.equal(vector.distance({7, 4, 3}, {17, 6, 2}), math.sqrt(105))
+end
+
+test.dot = function()
+  test.equal(vector.dot({3, -2, 7}, {0, 4, -1}), -15)
+end
+
+test.facing = function()
+  local p = {-3, 4}
+  local v = {5, -2}
+
+  test.equal(
+    vector.facing(p, v, {0, 0}),
+    23  
+  )
+
+  test.equal(
+    vector.facing(p, v, {1, 6}),
+    16  
+  )
+
+  test.equal(
+    vector.facing(p, v, {-6, 0}),
+    -7
+  )
+
+  test.equal(
+    vector.facing(p, v, {-4, 7}),
+    -11  
+  )
+end
+
+test.facing_angle = function()
+  local p = {-3, 4}
+  local v = {5, -2}
+
+  test.equal(
+    vector.facing_angle(p, v, {0, 0}),
+    23 / (math.sqrt(29) * math.sqrt(25)) -- 0.854
+  )
+
+  test.equal(
+    vector.facing_angle(p, v, {1, 6}),
+    16 / (math.sqrt(29) * math.sqrt(20)) -- 0.664
+  )
+end
+
+test.cross = function()
+  test.equivalent(
+    vector.cross(
+      {1, 3, 4},
+      {2, -5, 8}
+    ),
+    {44, 0, -11}
+  )
 end
