@@ -1,0 +1,503 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Reference</title>
+    <link rel="stylesheet" href="ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><strong>threed</strong></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>threed</code></h1>
+<p>API for manipulating and working with vectors.</p>
+<p>
+
+ It is assumed that all tables passed to these functions are numerically
+ indexed and have a length of at least one, referring to `{x}`, otherwise the
+ behavior of the functions is considered undefined.
+</p>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#assert">assert (v)</a></td>
+	<td class="summary">Asserts that the provided value is a valid vector table.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#is">is (v)</a></td>
+	<td class="summary">Returns whether the provided value is a valid vector table.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#zero">zero (n)</a></td>
+	<td class="summary">Returns the zero vector, or {0, ...</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#negate">negate (v)</a></td>
+	<td class="summary">Returns the negation of the provided vector.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#scale">scale (v, s)</a></td>
+	<td class="summary">Returns the result of the provided vector scaled multiplied by a value s</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#add">add (a, b)</a></td>
+	<td class="summary">Returns the result of adding vectors a and b</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#subtract">subtract (a, b)</a></td>
+	<td class="summary">Returns the result of subtracting vectors a by b</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#length">length (v)</a></td>
+	<td class="summary">Returns the length or mangitude of a vector v.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#normalize">normalize (v)</a></td>
+	<td class="summary">Returns a vector v normalized, or a vector that points in the same direction.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#distance">distance (a, b)</a></td>
+	<td class="summary">Returns the distance between two vectors.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#dot">dot (a, b)</a></td>
+	<td class="summary">Returns the dot (inner, cummulative) product of vectors a and b.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#facing">facing (p, v, x)</a></td>
+	<td class="summary">Returns how `x` is considered "facing" of `p`, direction `v`.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#facing_angle">facing_angle (p, v, x)</a></td>
+	<td class="summary">Returns the angle (in radians) that `x` is considered for `p`, `v`.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#cross">cross (a, b)</a></td>
+	<td class="summary">Returns the cross (outer, yields a vector) products of 3D vectors a and b.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#field_of_view">field_of_view (a)</a></td>
+	<td class="summary">Returns the field of view projection of angle `a` (in degrees).</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "assert"></a>
+    <strong>assert (v)</strong>
+    </dt>
+    <dd>
+    Asserts that the provided value is a valid vector table.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "is"></a>
+    <strong>is (v)</strong>
+    </dt>
+    <dd>
+    Returns whether the provided value is a valid vector table.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "zero"></a>
+    <strong>zero (n)</strong>
+    </dt>
+    <dd>
+    Returns the zero vector, or {0, ...  n}
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">n</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "negate"></a>
+    <strong>negate (v)</strong>
+    </dt>
+    <dd>
+    Returns the negation of the provided vector.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">v</span>
+
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "scale"></a>
+    <strong>scale (v, s)</strong>
+    </dt>
+    <dd>
+    Returns the result of the provided vector scaled multiplied by a value s
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">v</span>
+         Vector
+        </li>
+        <li><span class="parameter">s</span>
+         Another vector a scalar (number)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "add"></a>
+    <strong>add (a, b)</strong>
+    </dt>
+    <dd>
+    Returns the result of adding vectors a and b
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a</span>
+         Vector
+        </li>
+        <li><span class="parameter">b</span>
+         Vector
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "subtract"></a>
+    <strong>subtract (a, b)</strong>
+    </dt>
+    <dd>
+    Returns the result of subtracting vectors a by b
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a</span>
+         Vector
+        </li>
+        <li><span class="parameter">b</span>
+         Vector
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "length"></a>
+    <strong>length (v)</strong>
+    </dt>
+    <dd>
+    Returns the length or mangitude of a vector v.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">v</span>
+         Vector
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "normalize"></a>
+    <strong>normalize (v)</strong>
+    </dt>
+    <dd>
+    Returns a vector v normalized, or a vector that points in the same direction.
+
+ This ends up returning just the *direction* of the vector.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">v</span>
+         Vector
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "distance"></a>
+    <strong>distance (a, b)</strong>
+    </dt>
+    <dd>
+    Returns the distance between two vectors.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a</span>
+         Vector
+        </li>
+        <li><span class="parameter">b</span>
+         Vector
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "dot"></a>
+    <strong>dot (a, b)</strong>
+    </dt>
+    <dd>
+    Returns the dot (inner, cummulative) product of vectors a and b.
+
+ The result is the projection as a one-dimensional vector (scalar). The sign
+ of the dot product can also give a rough classification of the relative
+ directions of the two vectors, where `a^` * `b` tells us which half-space
+ `b` lies in.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a</span>
+         Vector
+        </li>
+        <li><span class="parameter">b</span>
+         Vector
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "facing"></a>
+    <strong>facing (p, v, x)</strong>
+    </dt>
+    <dd>
+    Returns how `x` is considered "facing" of `p`, direction `v`.
+
+ If the resulting value is < 0, it is considered "behind", > 0 it is
+ considered "in front", and = 0 it is considered parallel (neither).
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         Point
+        </li>
+        <li><span class="parameter">v</span>
+         Vector (Direction)
+        </li>
+        <li><span class="parameter">x</span>
+         Point
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "facing_angle"></a>
+    <strong>facing_angle (p, v, x)</strong>
+    </dt>
+    <dd>
+    Returns the angle (in radians) that `x` is considered for `p`, `v`.
+
+ Also known as `cos Θ`.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">p</span>
+         Point
+        </li>
+        <li><span class="parameter">v</span>
+         Vector (Direction)
+        </li>
+        <li><span class="parameter">x</span>
+         Point
+        </li>
+    </ul>
+
+
+
+    <h3>See also:</h3>
+    <ul>
+    </ul>
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example"><span class="keyword">local</span> a = angle.field_of_view(<span class="number">90</span>)
+<span class="keyword">local</span> p = {-<span class="number">3</span>, <span class="number">4</span>}
+<span class="keyword">local</span> v = {<span class="number">5</span>, -<span class="number">2</span>}
+<span class="global">print</span>(vector.facing_angle(p, v, {<span class="number">0</span>, <span class="number">0</span>}) &gt;= a)
+</pre>
+    </ul>
+
+</dd>
+    <dt>
+    <a name = "cross"></a>
+    <strong>cross (a, b)</strong>
+    </dt>
+    <dd>
+    Returns the cross (outer, yields a vector) products of 3D vectors a and b.
+
+ The result is a vector that is perpindicular to the original two vectors.
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a</span>
+         Vector (3D)
+        </li>
+        <li><span class="parameter">b</span>
+         Vector (3D)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "field_of_view"></a>
+    <strong>field_of_view (a)</strong>
+    </dt>
+    <dd>
+    Returns the field of view projection of angle `a` (in degrees).
+
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">a</span>
+         Angle (Degrees)
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2020-05-23 19:14:23 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
