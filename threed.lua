@@ -3,7 +3,7 @@
 -- It is assumed that all tables passed to these functions are numerically
 -- indexed and have a length of at least one, referring to `{x}`, otherwise the
 -- behavior of the functions is considered undefined.
-vector = {
+local vector = {
   --- Asserts that the provided value is a valid vector table.
   --
   -- @param v
@@ -42,7 +42,7 @@ vector = {
     end
     assert(n > 0)
     local result = {}
-    for i = n, 1, -1 do
+    for _ = n, 1, -1 do
       table.insert(result, 0)
     end
     return result
@@ -102,7 +102,7 @@ vector = {
   -- @param v Vector
   length = function(v)
     local result = 0
-    for i, n in ipairs(v) do
+    for _, n in ipairs(v) do
       result = result + n * n
     end
     return math.sqrt(result)
@@ -178,7 +178,7 @@ vector = {
   -- local v = {5, -2}
   -- print(vector.facing_angle(p, v, {0, 0}) >= a)
   facing_angle = function(p, v, x)
-    --          v ∙ (x - p)    
+    --          v ∙ (x - p)
     -- cos Θ =  -----------
     --          ║v║ ║x - p║
     local facing = vector.facing(p, v, x)
@@ -195,7 +195,7 @@ vector = {
   --
   -- @param a Vector (3D)
   -- @param b Vector (3D)
-  cross = function(a, b) 
+  cross = function(a, b)
     assert(#a == 3)
     assert(#b == 3)
     local x = a[2] * b[3] - a[3] * b[2]
@@ -205,7 +205,7 @@ vector = {
   end
 }
 
-angle = {
+local angle = {
   --- Returns the field of view projection of angle `a` (in degrees).
   --
   -- @param a Angle (Degrees)

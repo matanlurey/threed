@@ -34,11 +34,11 @@ test.is = function()
 end
 
 test.zero = function()
-  local vector = vector.zero(3)
-  test.equal(#vector, 3)
-  test.equal(vector[1], 0)
-  test.equal(vector[2], 0)
-  test.equal(vector[3], 0)
+  local v = vector.zero(3)
+  test.equal(#v, 3)
+  test.equal(v[1], 0)
+  test.equal(v[2], 0)
+  test.equal(v[3], 0)
 end
 
 test.negate = function()
@@ -83,12 +83,12 @@ test.facing = function()
 
   test.equal(
     vector.facing(p, v, {0, 0}),
-    23  
+    23
   )
 
   test.equal(
     vector.facing(p, v, {1, 6}),
-    16  
+    16
   )
 
   test.equal(
@@ -98,7 +98,7 @@ test.facing = function()
 
   test.equal(
     vector.facing(p, v, {-4, 7}),
-    -11  
+    -11
   )
 end
 
