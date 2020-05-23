@@ -27,7 +27,7 @@ jobs:
 
       - name: Check
         run: |
-          luacheck threed.lua tests
+          luacheck threed.lua tests/vector.lua
 
       - name: Test
         run: |
